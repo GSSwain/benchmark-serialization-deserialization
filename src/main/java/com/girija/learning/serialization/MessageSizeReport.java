@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,11 +20,20 @@ public class MessageSizeReport {
 	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		prepareReport();
+		printMessages();
 		printReport();
 	}
 
+	private static void printMessages() {
+		for(MessageMetadata messageMetadata : messageMetdataList){
+			System.out.printf("%n%n%s%s", "Message Format: ", messageMetadata.getFormat());
+			System.out.printf("%n%s%s", "Message Text: ", new String(messageMetadata.getMessage()));
+			System.out.printf("%n%s%s", "Message Byte: ", Arrays.toString(messageMetadata.getMessage()));
+		}
+	}
+
 	private static void printReport() {
-		System.out.printf("%-40s%10s%30s%30s%30s%n", "Format", "Size", "Serialization Time(Nano)", "Deserialization Time(Nano)", "Total Time(Milli)");
+		System.out.printf("%n%n%-40s%10s%30s%30s%30s%n", "Format", "Size", "Serialization Time(Nano)", "Deserialization Time(Nano)", "Total Time(Milli)");
 		for(MessageMetadata messageMetadata : messageMetdataList){
 			System.out.printf("%-40s%10d%30d%30d%30d %n", messageMetadata.getFormat(), messageMetadata.getSize(), messageMetadata.getSerializationTime(), messageMetadata.getDeserializationTime(), (messageMetadata.getSerializationTime() + messageMetadata.getDeserializationTime())/1000000);
 		}
@@ -50,6 +60,7 @@ public class MessageSizeReport {
 
 	private static MessageMetadata getMessageMetadataXML() {
 		XStream xStream = new XStream();
+		xStream.alias("IdAndName", IdAndName.class);
 		long beforeSerialization = System.nanoTime();
 		String serializedMessage = xStream.toXML(idAndName);
 		long afterSerialization = System.nanoTime();
