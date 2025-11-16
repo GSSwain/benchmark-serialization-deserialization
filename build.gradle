@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.girija.learning'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.thoughtworks.xstream:xstream:1.4.17'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.10.7'
+    implementation 'com.google.protobuf:protobuf-java:2.6.1'
+    testImplementation 'junit:junit:4.13.1'
+}
+
+task testJar(type: Jar) {
+    from sourceSets.test.output
+    archiveClassifier = 'tests'
+}
+
+artifacts {
+    testRuntimeOnly testJar
+}
