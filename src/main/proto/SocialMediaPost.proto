@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.gsswain.benchmark.serialization.model;
+
+option java_package = "com.gsswain.benchmark.serialization.model.proto";
+option java_multiple_files = true;
+
+message SocialMediaPost {
+  string postId = 1;
+  string authorId = 2;
+  string content = 3;
+  int64 timestamp = 4;
+  repeated Media mediaAttachments = 5;
+  repeated string likes = 6;
+  repeated Comment comments = 7;
+}
+
+message Media {
+  enum MediaType {
+    IMAGE = 0;
+    VIDEO = 1;
+  }
+  MediaType type = 1;
+  string url = 2;
+}
+
+message Comment {
+  string commentId = 1;
+  string commenterId = 2;
+  string commentText = 3;
+  int64 timestamp = 4;
+}
