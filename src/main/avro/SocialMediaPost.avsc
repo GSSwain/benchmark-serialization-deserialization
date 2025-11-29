@@ -1,0 +1,48 @@
+{
+  "namespace": "com.gsswain.benchmark.serialization.model.avro",
+  "type": "record",
+  "name": "SocialMediaPost",
+  "fields": [
+    {"name": "postId", "type": "string"},
+    {"name": "authorId", "type": "string"},
+    {"name": "content", "type": "string"},
+    {"name": "timestamp", "type": "long"},
+    {
+      "name": "mediaAttachments",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "Media",
+          "fields": [
+            {"name": "type", "type": {"type": "enum", "name": "MediaType", "symbols": ["IMAGE", "VIDEO"]}},
+            {"name": "url", "type": "string"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "likes",
+      "type": {
+        "type": "array",
+        "items": "string"
+      }
+    },
+    {
+      "name": "comments",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "Comment",
+          "fields": [
+            {"name": "commentId", "type": "string"},
+            {"name": "commenterId", "type": "string"},
+            {"name": "commentText", "type": "string"},
+            {"name": "timestamp", "type": "long"}
+          ]
+        }
+      }
+    }
+  ]
+}
