@@ -6,6 +6,7 @@ import com.gsswain.benchmark.serialization.json.JsonSerde;
 import com.gsswain.benchmark.serialization.protobuf.ProtobufSerde;
 import com.gsswain.benchmark.serialization.report.ReportPrinter;
 import com.gsswain.benchmark.serialization.report.SerializationReport;
+import com.gsswain.benchmark.util.EnvironmentUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class SerializationReportGenerator {
     );
 
     public static void main(String[] args) throws Exception {
+        EnvironmentUtil.printEnvironment();
         ReportPrinter.print(generateSerializationReport());
     }
 
