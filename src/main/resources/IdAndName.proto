@@ -1,8 +1,0 @@
-package com.learning.girija.protobuf;
-
-option java_package = "com.girija.learning.serialization";
-
-message IdAndName {
-  required string name = 1;
-  required int32 id = 2;
-}
