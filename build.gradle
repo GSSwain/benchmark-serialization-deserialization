@@ -14,7 +14,8 @@ repositories {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
+        def javaVersion = project.hasProperty('javaVersion') ? project.property('javaVersion').toInteger() : 17
+        languageVersion = JavaLanguageVersion.of(javaVersion)
     }
 }
 
