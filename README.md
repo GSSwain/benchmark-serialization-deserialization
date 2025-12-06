@@ -37,12 +37,6 @@ The project follows a standard Gradle Java project structure, with some specific
     │           └── protobuf      // Protobuf JMH benchmarks
     └── test                      // Unit tests
         └── java
-            └── com/gsswain/benchmark
-                └── serialization
-                    ├── avro      // Avro unit tests
-                    ├── json      // JSON unit tests
-                    ├── protobuf  // Protobuf unit tests
-                    └── report    // Report unit tests
 ```
 
 ## Sample Object
@@ -117,10 +111,14 @@ The benchmarks use a `SocialMediaPost` object, which has the following structure
 To build the project, run the following command:
 
 ```bash
-./gradlew build
+./gradlew clean build
 ```
 
 This will compile the code, run the unit tests, and generate the code coverage report.
+
+## CI/CD
+
+This project uses GitHub Actions to automatically run the JMH benchmarks on every push to the `main` branch. The workflow is defined in `.github/workflows/benchmark.yml` and runs the benchmarks on JDK 17, 21 and 25.
 
 ## Running the Benchmarks
 
@@ -129,7 +127,7 @@ This will compile the code, run the unit tests, and generate the code coverage r
 The project uses the Java Microbenchmark Harness (JMH) to provide accurate and reliable performance measurements. To run the benchmarks, execute the following command:
 
 ```bash
-./gradlew jmh
+./gradlew jmh -PjavaVersion=25 -Pjmh.threads=1
 ```
 
 The results will be printed to the console, showing the average time for each serialization and deserialization operation.
