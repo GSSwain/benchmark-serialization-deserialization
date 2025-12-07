@@ -52,11 +52,11 @@ The benchmarks use a `SocialMediaPost` object, which has the following structure
   "mediaAttachments": [
     {
       "type": "IMAGE",
-      "url": "http://example.com/some-random-string.jpg"
+      "url": "http://example.com/some-random-image.jpg"
     },
     {
       "type": "VIDEO",
-      "url": "http://example.com/some-random-string.jpg"
+      "url": "http://example.com/some-random-video.mp4"
     }
   ],
   "likes": [
