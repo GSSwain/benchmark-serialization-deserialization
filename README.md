@@ -120,6 +120,16 @@ This will compile the code, run the unit tests, and generate the code coverage r
 
 This project uses GitHub Actions to automatically run the JMH benchmarks on every push to the `main` branch. The workflow is defined in `.github/workflows/benchmark.yml` and runs the benchmarks on JDK 17, 21 and 25.
 
+## Live JMH Report
+
+This project uses `jmh.morethan.io`, a free online tool for visualizing JMH benchmark results. It reads data directly from a GitHub Gist, allowing for easy sharing and interactive analysis of benchmark data.
+
+The GitHub Actions workflow for this project is configured to automatically update a public Gist with the latest benchmark results upon every push to the `main` branch. The workflow runs the benchmarks across various configurations (different JDK versions) and uploads each result to the Gist.
+
+You can view the live, interactive report of the latest benchmark run here:
+
+[View Live JMH Report](https://jmh.morethan.io/?gist=c724d78f175ebf8daa62761a138ff9ff)
+
 ## Running the Benchmarks
 
 ### Performance Benchmarks
