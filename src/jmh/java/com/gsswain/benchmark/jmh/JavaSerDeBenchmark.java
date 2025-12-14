@@ -13,6 +13,7 @@ import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
@@ -27,12 +28,27 @@ import org.openjdk.jmh.infra.Blackhole;
 @Fork(2)
 public class JavaSerDeBenchmark {
 
+    @Param({"os-placeholder"})
+    public String os;
+
+    @Param({"java-runtime-placeholder"})
+    public String javaRuntime;
+
+    @Param({"1"})
+    public Integer processors;
+
+    @Param({"jvmMemory-placeholder"})
+    public String jvmMemory;
+
+    @Param({"1"})
+    public Integer jmhThreads;
+
     @Setup(Level.Trial)
     public void setup() {
         EnvironmentUtil.printEnvironment();
     }
 
-    @State(Scope.Thread)
+    @State(Scope.Benchmark)
     public static class BenchmarkState {
         final AvroBinarySerDeBenchmark.BenchmarkState avroBinaryState = new AvroBinarySerDeBenchmark.BenchmarkState();
         final AvroJsonSerDeBenchmark.BenchmarkState avroJsonState = new AvroJsonSerDeBenchmark.BenchmarkState();
