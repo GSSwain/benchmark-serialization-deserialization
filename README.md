@@ -147,15 +147,15 @@ The results will be printed to the console, showing the average time for each se
 Here are the results from running the JMH benchmarks on JDK Zulu 25 on Apple M3 Pro with 18GB RAM
 
 ```
-Benchmark                                             (javaRuntime)  (jmhThreads)  (jvmMemory)                     (os)  (processors)  Mode  Cnt     Score     Error  Units
-JavaSerDeBenchmark.avroBinaryDeserialization  25+36-LTS (Azul Zulu)             1           2g  Mac OS X-26.1 (aarch64)            11  avgt   20  1577.173 ±  32.180  ns/op
-JavaSerDeBenchmark.avroBinarySerialization    25+36-LTS (Azul Zulu)             1           2g  Mac OS X-26.1 (aarch64)            11  avgt   20   581.956 ±   2.852  ns/op
-JavaSerDeBenchmark.avroJsonDeserialization    25+36-LTS (Azul Zulu)             1           2g  Mac OS X-26.1 (aarch64)            11  avgt   20  5982.342 ± 101.542  ns/op
-JavaSerDeBenchmark.avroJsonSerialization      25+36-LTS (Azul Zulu)             1           2g  Mac OS X-26.1 (aarch64)            11  avgt   20  4326.503 ±  64.752  ns/op
-JavaSerDeBenchmark.jsonDeserialization        25+36-LTS (Azul Zulu)             1           2g  Mac OS X-26.1 (aarch64)            11  avgt   20  1661.437 ±  20.100  ns/op
-JavaSerDeBenchmark.jsonSerialization          25+36-LTS (Azul Zulu)             1           2g  Mac OS X-26.1 (aarch64)            11  avgt   20  1144.961 ±   3.471  ns/op
-JavaSerDeBenchmark.protobufDeserialization    25+36-LTS (Azul Zulu)             1           2g  Mac OS X-26.1 (aarch64)            11  avgt   20   742.170 ±   6.464  ns/op
-JavaSerDeBenchmark.protobufSerialization      25+36-LTS (Azul Zulu)             1           2g  Mac OS X-26.1 (aarch64)            11  avgt   20   894.658 ±   7.276  ns/op
+Benchmark                                     (javaRuntime)  (javaVendor)  (jmhThreads)  (jvmMemory)  (osArchitecture)  (osName)  (osVersion)  (processors)  Mode  Cnt     Score    Error  Units
+JavaSerDeBenchmark.avroBinaryDeserialization      25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  1567.112 ± 57.603  ns/op
+JavaSerDeBenchmark.avroBinarySerialization        25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20   579.597 ±  3.104  ns/op
+JavaSerDeBenchmark.avroJsonDeserialization        25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  6035.537 ± 68.664  ns/op
+JavaSerDeBenchmark.avroJsonSerialization          25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  4323.669 ± 29.708  ns/op
+JavaSerDeBenchmark.jsonDeserialization            25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  1625.585 ±  5.118  ns/op
+JavaSerDeBenchmark.jsonSerialization              25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  1161.439 ± 11.734  ns/op
+JavaSerDeBenchmark.protobufDeserialization        25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20   735.743 ±  4.210  ns/op
+JavaSerDeBenchmark.protobufSerialization          25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20   905.096 ± 11.320  ns/op
 
 ```
 

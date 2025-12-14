@@ -28,16 +28,25 @@ import org.openjdk.jmh.infra.Blackhole;
 @Fork(2)
 public class JavaSerDeBenchmark {
 
-    @Param({"os-placeholder"})
-    public String os;
+    @Param({"os-name-placeholder"})
+    public String osName;
+
+    @Param({"os-version-placeholder"})
+    public String osVersion;
+
+    @Param({"os-rrchitecture-placeholder"})
+    public String osArchitecture;
 
     @Param({"java-runtime-placeholder"})
     public String javaRuntime;
 
+    @Param({"java-vendor-placeholder"})
+    public String javaVendor;
+
     @Param({"1"})
     public Integer processors;
 
-    @Param({"jvmMemory-placeholder"})
+    @Param({"jvm-memory-placeholder"})
     public String jvmMemory;
 
     @Param({"1"})
