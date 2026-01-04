@@ -100,13 +100,31 @@ protobuf {
         }
     }
 }
-
 jmh {
+    def jmhThreads = project.hasProperty('jmh.threads') ? project.property('jmh.threads').toInteger() : 1
+    def toolchainLauncher = project.extensions.getByType(JavaToolchainService).launcherFor(java.toolchain)
+    def jmhMaxMemory = '2g'
+
+
+
+
     resultFormat = 'JSON'
     resultsFile = layout.buildDirectory.file('reports/jmh/results.json').get().asFile
     jmhVersion = '1.37'
     timeUnit = 'ns'
-    threads = project.hasProperty('jmh.threads') ? project.property('jmh.threads').toInteger() : 1
+    threads = jmhThreads
+    jvmArgs = ["-Xmx${jmhMaxMemory}", "-Xms${jmhMaxMemory}"]
+
+    benchmarkParameters = [
+        javaRuntime: objects.listProperty(String).value([toolchainLauncher.map { l -> l.metadata.javaRuntimeVersion }.get().replaceAll(" ", "_")]),
+        javaVendor: objects.listProperty(String).value([toolchainLauncher.map { l ->  l.metadata.vendor }.get().replaceAll(" ", "_")]),
+        osName: objects.listProperty(String).value([System.getProperty("os.name").replaceAll(" ", "_")]),
+        osVersion: objects.listProperty(String).value([System.getProperty("os.version").replaceAll(" ", "_")]),
+        osArchitecture: objects.listProperty(String).value([System.getProperty("os.arch").replaceAll(" ", "_")]),
+        processors: objects.listProperty(String).value([Runtime.getRuntime().availableProcessors().toString()]),
+        jvmMemory: objects.listProperty(String).value([jmhMaxMemory]),
+        jmhThreads: objects.listProperty(String).value([jmhThreads.toString()])
+    ]
 }
 
 tasks.named('jmhReport') {
