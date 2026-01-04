@@ -147,23 +147,16 @@ The results will be printed to the console, showing the average time for each se
 Here are the results from running the JMH benchmarks on JDK Zulu 25 on Apple M3 Pro with 18GB RAM
 
 ```
-Benchmark                                                         Mode  Cnt     Score    Error   Units
-c.g.b.j.avro.AvroBinarySerDeBenchmark.binaryDeserialization      thrpt   20     0.001 ±  0.001  ops/ns
-c.g.b.j.avro.AvroBinarySerDeBenchmark.binarySerialization        thrpt   20     0.002 ±  0.001  ops/ns
-c.g.b.j.avro.AvroJsonSerDeBenchmark.jsonDeserialization          thrpt   20    ≈ 10⁻⁴           ops/ns
-c.g.b.j.avro.AvroJsonSerDeBenchmark.jsonSerialization            thrpt   20    ≈ 10⁻⁴           ops/ns
-c.g.b.j.json.JsonSerDeBenchmark.jsonDeserialization              thrpt   20     0.001 ±  0.001  ops/ns
-c.g.b.j.json.JsonSerDeBenchmark.jsonSerialization                thrpt   20     0.001 ±  0.001  ops/ns
-c.g.b.j.protobuf.ProtobufSerDeBenchmark.protobufDeserialization  thrpt   20     0.001 ±  0.001  ops/ns
-c.g.b.j.protobuf.ProtobufSerDeBenchmark.protobufSerialization    thrpt   20     0.002 ±  0.001  ops/ns
-c.g.b.j.avro.AvroBinarySerDeBenchmark.binaryDeserialization       avgt   20  1495.334 ±  7.127   ns/op
-c.g.b.j.avro.AvroBinarySerDeBenchmark.binarySerialization         avgt   20   586.868 ±  4.986   ns/op
-c.g.b.j.avro.AvroJsonSerDeBenchmark.jsonDeserialization           avgt   20  5915.887 ± 14.912   ns/op
-c.g.b.j.avro.AvroJsonSerDeBenchmark.jsonSerialization             avgt   20  4358.061 ±  8.229   ns/op
-c.g.b.j.json.JsonSerDeBenchmark.jsonDeserialization               avgt   20  1658.018 ± 20.257   ns/op
-c.g.b.j.json.JsonSerDeBenchmark.jsonSerialization                 avgt   20  1148.056 ±  5.189   ns/op
-c.g.b.j.protobuf.ProtobufSerDeBenchmark.protobufDeserialization   avgt   20   714.819 ±  7.636   ns/op
-c.g.b.j.protobuf.ProtobufSerDeBenchmark.protobufSerialization     avgt   20   438.998 ±  1.370   ns/op
+Benchmark                                     (javaRuntime)  (javaVendor)  (jmhThreads)  (jvmMemory)  (osArchitecture)  (osName)  (osVersion)  (processors)  Mode  Cnt     Score    Error  Units
+JavaSerDeBenchmark.avroBinaryDeserialization      25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  1567.112 ± 57.603  ns/op
+JavaSerDeBenchmark.avroBinarySerialization        25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20   579.597 ±  3.104  ns/op
+JavaSerDeBenchmark.avroJsonDeserialization        25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  6035.537 ± 68.664  ns/op
+JavaSerDeBenchmark.avroJsonSerialization          25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  4323.669 ± 29.708  ns/op
+JavaSerDeBenchmark.jsonDeserialization            25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  1625.585 ±  5.118  ns/op
+JavaSerDeBenchmark.jsonSerialization              25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20  1161.439 ± 11.734  ns/op
+JavaSerDeBenchmark.protobufDeserialization        25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20   735.743 ±  4.210  ns/op
+JavaSerDeBenchmark.protobufSerialization          25+36-LTS     Azul_Zulu             1           2g           aarch64  Mac_OS_X         26.1            11  avgt   20   905.096 ± 11.320  ns/op
+
 ```
 
 ### JMH Report
@@ -171,7 +164,7 @@ c.g.b.j.protobuf.ProtobufSerDeBenchmark.protobufSerialization     avgt   20   43
 The `jmhReport` task generates a detailed HTML report of the JMH benchmark results. To generate this report, run:
 
 ```bash
-./gradlew jmhReport
+./gradlew jmhReport -PjavaVersion=25 -Pjmh.threads=1
 ```
 
 You can find the generated report at `build/reports/jmh/index.html`. This report provides a more interactive and detailed view of the benchmark results, including charts and statistical analysis.
