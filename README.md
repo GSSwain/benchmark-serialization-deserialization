@@ -128,7 +128,7 @@ The GitHub Actions workflow for this project is configured to automatically upda
 
 You can view the live, interactive report of the latest benchmark run here:
 
-[View Live JMH Report](https://jmh.morethan.io/?gist=c724d78f175ebf8daa62761a138ff9ff)
+[View Live JMH Report](https://gsswain.com/jmh-report-visualizer/?gistId=c724d78f175ebf8daa62761a138ff9ff)
 
 ## Running the Benchmarks
 
